@@ -6,6 +6,9 @@
 
   <title>Great Race Project</title>
   <meta name="description" content="HTML5 Template">
+
+  <!--Background image-->
+
   <style>
   body {
     background-image: url('Background.jpg');
@@ -13,10 +16,59 @@
     background-repeat: no-repeat;
   }
   </style>
+
+  <script type="text/javascript">
+
+  var imgObj ;
+  var animate ;
+
+  function init(){
+   //GREEN FISH STARTING LINE
+   imgObj = document.getElementById('greenFish');
+   imgObj.style.position= 'relative';
+   imgObj.style.left = '0px';
+
+   //RED FISH STARTING LINE
+   imgObj2 = document.getElementById('redFish');
+   imgObj2.style.position= 'relative';
+   imgObj2.style.left = '0px';
+  }
+
+  //CHANGES RED LIGHT TO GREEN LIGHT
+  function changeImage() {
+    document.getElementById("redLight").src = 'greenlight.png';
+  }
+
+  function moveRight(){
+   imgObj2.style.left = parseInt(imgObj.style.left) + 5 + 'px'; // move from the left 5 pixels
+   imgObj.style.left = parseInt(imgObj.style.left) + 5 + 'px'; // move from the left 5 pixels
+   animate = setTimeout(moveRight,20); // call moveRight in 20 milliseconds
+  }
+
+  function stop(){
+   clearTimeout(animate); // stops the animation
+   // add imgObj.style.left = '0px'; if you want to reset the image back to the left side of screen
+  }
+
+  window.onload =init; // starts animation when page loads
+
+  </script>
 </head>
 
 <body>
-<img src="redlight.png" alt="red light">
+  <!--INSTRUCTIONS FOR BUTTON-->
+<p style="color:white; font-weight:bold">CLICK BELOW TO START THE RACE</p>
+<img id="redLight" src="redlight.png" onclick="moveRight(); changeImage()">
+
+<!--GREEN FISH-->
+<form>
+<img id="greenFish" src="greenfish.png" width="100" height="100"/>
+</form>
+
+<!--RED FISH-->
+<form>
+<img id="redFish" src="redfish.png" width="100" height="100"/>
+</form>
 
 </body>
 </html>
