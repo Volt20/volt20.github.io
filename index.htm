@@ -21,6 +21,8 @@
 
   var imgObj ;
   var animate ;
+  var random1 = Math.floor(Math.random() * 10)
+  var random2 = Math.floor(Math.random() * 10)
 
   function init(){
    //GREEN FISH STARTING LINE
@@ -40,17 +42,18 @@
   }
 
   function moveRight(){
-   imgObj2.style.left = parseInt(imgObj.style.left) + 5 + 'px'; // move from the left 5 pixels
-   imgObj.style.left = parseInt(imgObj.style.left) + 5 + 'px'; // move from the left 5 pixels
+   imgObj2.style.left = parseInt(imgObj2.style.left) + random1 + 'px'; // move from the left 5 pixels
+   imgObj.style.left = parseInt(imgObj.style.left) + random2 + 'px'; // move from the left 5 pixels
    animate = setTimeout(moveRight,20); // call moveRight in 20 milliseconds
   }
 
   function stop(){
    clearTimeout(animate); // stops the animation
-   // add imgObj.style.left = '0px'; if you want to reset the image back to the left side of screen
+   //imgObj.style.left = '0px'; if you want to reset the image back to the left side of screen
+   //imgObj2.style.left = '0px';
   }
 
-  window.onload =init; // starts animation when page loads
+  window.onload = init; // starts animation when page loads
 
   </script>
 </head>
